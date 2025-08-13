@@ -25,7 +25,20 @@ def _load_local_model():
 
 
 def embed_texts(texts: List[str]) -> List[List[float]]:
-    # OpenAI embeddings expect UTF-8 strings; returns 1536 dims for -3-small
-    client = get_client()
-    resp = client.embeddings.create(model=OPENAI_MODEL, input=texts)
-    return [d.embedding for d in resp.data]
+     # 1. OpenAI
+    if OPENAI_API_KEY:
+        try:
+            from openai import OpenAI
+            client = OpenAI(api_key=OPENAI_API_KEY)
+            resp = client.embeddings.create(model=OPENAI_MODEL, input=texts)
+            return [d.embedding for d in resp.data]
+        except Exception as e:
+            if "insufficient_quota" in str(e) or "You exceeded your current quota" in str(e):
+                print("!!! Limit wyczrpany OpenAI. Wykorzytuję lokalny model...")
+            else:
+                print(f"Błąd OpenAI: {e}. Wykorzytuję lokalny model...")
+    
+    # 2. Lokalny model 
+    model = _load_local_model()
+    vecs = model.encode(texts, convert_to_numpy=True, show_progress_bar=False)
+    return vecs.tolist()
