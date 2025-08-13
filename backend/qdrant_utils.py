@@ -3,6 +3,7 @@ from typing import List, Dict, Any
 from qdrant_client import QdrantClient
 from qdrant_client.http.models import Distance, VectorParams, PointStruct, Filter, FieldCondition, MatchValue
 from dotenv import load_dotenv
+import uuid
 
 load_dotenv()
 
@@ -43,7 +44,9 @@ def upsert_chunks(chunks: List[str], vectors: List[List[float]], meta: List[Dict
     for i, (v, m, text) in enumerate(zip(vectors, meta, chunks)):
         m = dict(m)
         m.update({"text": text})
-        points.append(PointStruct(id=m.get("id") or None, vector=v, payload=m))
+        raw_id = f"{m.get('source', 'unknown')}-{i}"
+        point_id = str(uuid.uuid5(uuid.NAMESPACE_DNS, raw_id))
+        points.append(PointStruct(id=point_id, vector=v, payload=m))
     client.upsert(collection_name=COLLECTION_NAME, points=points)
 
 def search(query_vec: List[float], top_k: int = 5, where: Dict[str,Any] | None = None):
