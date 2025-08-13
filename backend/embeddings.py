@@ -23,11 +23,6 @@ def _load_local_model():
     return _local_model
 
 
-def get_client():
-    global _client
-    if _client is None:
-        _client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-    return _client
 
 def embed_texts(texts: List[str]) -> List[List[float]]:
     # OpenAI embeddings expect UTF-8 strings; returns 1536 dims for -3-small
