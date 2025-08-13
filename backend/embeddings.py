@@ -9,6 +9,9 @@ load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 OPENAI_MODEL = os.getenv("OPENAI_EMBEDDING_MODEL", "text-embedding-3-small")
 
+# === Cohere cofig ===
+COHERE_API_KEY = os.getenv("COHERE_API_KEY")
+
 # === Local model ===
 LOCAL_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 _local_model = None
