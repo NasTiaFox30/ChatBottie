@@ -22,7 +22,6 @@ def _load_local_model():
         _local_model = SentenceTransformer(LOCAL_MODEL_NAME)
     return _local_model
 
-_client = None
 
 def get_client():
     global _client
