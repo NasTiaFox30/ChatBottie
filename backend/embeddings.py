@@ -13,6 +13,15 @@ OPENAI_MODEL = os.getenv("OPENAI_EMBEDDING_MODEL", "text-embedding-3-small")
 LOCAL_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 _local_model = None
 
+
+def _load_local_model():
+    global _local_model
+    if _local_model is None:
+        from sentence_transformers import SentenceTransformer
+        print(f"🔄 Завантажую локальну модель {LOCAL_MODEL_NAME}...")
+        _local_model = SentenceTransformer(LOCAL_MODEL_NAME)
+    return _local_model
+
 _client = None
 
 def get_client():
