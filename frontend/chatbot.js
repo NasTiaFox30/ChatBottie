@@ -43,6 +43,8 @@ function addTyping() {
   return el;
 }
 
+function removeTyping(el) { if (el && el.parentNode) el.parentNode.removeChild(el); }
+
 chatForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const text = userInput.value.trim();
