@@ -1,3 +1,5 @@
+const API_BASE = "http://localhost:8000";
+
 const messagesEl = document.getElementById('messages');
 const chatForm   = document.getElementById('chatForm');
 const userInput  = document.getElementById('userInput');
