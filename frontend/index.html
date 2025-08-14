@@ -30,21 +30,22 @@
                     </div>
                 </div>
 
-                <div class="toolbar">
-                    <label class="file-btn">
-                        <input id="fileInput" type="file" multiple accept=".pdf,.docx,.csv" />
-                        📎 Prześlij pliki
-                    </label>
+                <div class="user-box">
+                    <form id="chatForm" class="composer" autocomplete="off">
+                        <input id="userInput" type="text" placeholder="Napisz wiadomość…" required />
+                        <button id="sendBtn" type="submit" title="Wyślij">Wyślij ➤</button>
+                    </form>
 
-                    <button id="importCmsBtn" class="ghost">Importuj CMS (demo)</button>
-                    <button id="clearBtn" class="ghost danger">Wyczyść</button>
+                    <div class="toolbar">
+                        <label class="file-btn">
+                            <input id="fileInput" type="file" multiple accept=".pdf,.docx,.csv" />
+                            📎 Prześlij pliki
+                        </label>
+
+                        <button id="importCmsBtn" class="ghost">Importuj CMS (demo)</button>
+                        <button id="clearBtn" class="ghost danger">Wyczyść</button>
+                    </div>
                 </div>
-
-                <form id="chatForm" class="composer" autocomplete="off">
-                    <input id="userInput" type="text" placeholder="Napisz wiadomość…" required />
-                    <button id="sendBtn" type="submit" title="Wyślij">Wyślij ➤</button>
-                </form>
-
             </section>
         </main>
 
