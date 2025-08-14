@@ -85,9 +85,17 @@ async def chat(req: ChatRequest):
     query = clean_text(req.query)
     if not query:
         raise HTTPException(status_code=400, detail="Puste zapytanie.")
+
+    # 1️) Wektoryzacja
     q_vec = embed_texts([query])[0]
+    # 2️) Szukanie fragmentów
     hits = search(q_vec, top_k=max(1, min(10, req.top_k)))
-    return build_answer(query, hits)
+    if not hits:
+        return ChatResponse(
+            answer="Nie znalazłem danych ;( Spróbuj zadać inne pytanie lub wgraj dokumenty.",
+            sources=[]
+        )
+    
 
 @app.post("/upload")
 async def upload(files: List[UploadFile] = File(...)):
