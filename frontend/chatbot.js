@@ -32,6 +32,7 @@ function addMessage(role, text, sources=[]) {
   messagesEl.scrollTop = messagesEl.scrollHeight;
 }
 
+// bot typing (thinking)
 function addTyping() {
   const el = document.createElement('div');
   el.className = 'msg bot';
