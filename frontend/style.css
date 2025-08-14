@@ -221,3 +221,14 @@ body {
   border-color: var(--danger);
   color: var(--danger)
 }
+
+/* mobile adaptation */
+@media (max-width:700px) {
+  .chat {
+    min-height: 78vh
+  }
+
+  .composer button {
+    padding: 12px
+  }
+}
