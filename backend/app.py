@@ -10,7 +10,7 @@ import httpx
 load_dotenv()
 
 # ==== SPRAWDZANIE ====
-REQUIRED_ENV_VARS = ["QDRANT_URL", "QDRANT_API_KEY"]
+REQUIRED_ENV_VARS = ["QDRANT_URL", "QDRANT_API_KEY", "GEMINI_API_KEY"]
 missing_vars = [var for var in REQUIRED_ENV_VARS if not os.getenv(var)]
 
 if missing_vars:
