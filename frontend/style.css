@@ -203,3 +203,12 @@ body {
 .file-btn input {
   display: none
 }
+
+.ghost {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, .15);
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer
+}
