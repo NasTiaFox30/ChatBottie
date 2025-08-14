@@ -22,3 +22,33 @@ html,
 body {
   height: 100%
 }
+
+body {
+  margin: 0;
+  background: radial-gradient(1200px 600px at 10% 0%, #131738 0%, #0b0e22 60%, #0a0d1e 100%);
+  color: var(--text);
+  font-family: var(--font);
+}
+
+.app-header,
+.app-footer {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 16px
+}
+
+.logo_container {
+  display: flex;
+  gap: 12px;
+  align-items: center
+}
+
+.logo {
+  font-size: 28px
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 16px
+}
