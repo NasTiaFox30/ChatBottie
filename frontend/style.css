@@ -141,3 +141,11 @@ body {
     transform: translateY(-2px)
   }
 }
+
+.toolbar {
+  border-top: 1px solid rgba(255, 255, 255, .06);
+  padding: 10px 12px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
