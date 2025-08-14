@@ -78,7 +78,7 @@ async def generate_with_gemini(prompt: str, temperature: float = 0.7) -> str:
 @app.get("/health")
 def health():
     ensure_collection()
-    return {"status": "ok", "embedding_model": "all-MiniLM-L6-v2"}
+    return {"status": "ok", "model": "Gemini 1.5 Flash"}
 
 @app.post("/chat", response_model=ChatResponse)
 async def chat(req: ChatRequest):
