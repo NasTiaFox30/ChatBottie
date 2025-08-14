@@ -42,3 +42,31 @@ function addTyping() {
   messagesEl.scrollTop = messagesEl.scrollHeight;
   return el;
 }
+
+chatForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const text = userInput.value.trim();
+  if (!text) return;
+  addMessage('user', text);
+  userInput.value = '';
+
+  const typing = addTyping();
+  try {
+    const res = await fetch(`${API_BASE}/chat`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ query: text, top_k: 5 })
+    });
+    const data = await res.json();
+    removeTyping(typing);
+    if (!res.ok) {
+      addMessage('bot', `❌ Błąd: ${data.detail || res.statusText}`);
+    } else {
+      addMessage('bot', data.answer, data.sources || []);
+    }
+  } catch (err) {
+    removeTyping(typing);
+    addMessage('bot', `Problem z połączeniem ;(
+      (${err.message}).`);
+  }
+});
