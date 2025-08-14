@@ -106,6 +106,17 @@ Pytanie: {query}
 Kontekst:
 {context}
 """
+    # 4️) Generacja odpowiedzi przez Gemini
+    answer_text = await generate_with_gemini(prompt)
+    # 5️) Formowanie źródeł
+    sources = [{
+        "id": r.payload.get("id") or str(uuid.uuid4())[:8],
+        "source": r.payload.get("source") or "fragment",
+        "file_type": r.payload.get("file_type") or "text",
+        "url": r.payload.get("url"),
+    } for r in hits[:5]]
+
+    return ChatResponse(answer=answer_text, sources=sources)
     
     
 
