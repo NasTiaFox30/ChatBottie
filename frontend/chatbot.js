@@ -72,3 +72,27 @@ chatForm.addEventListener('submit', async (e) => {
       (${err.message}).`);
   }
 });
+
+// upload files
+fileInput.addEventListener('change', async (e) => {
+  const files = Array.from(e.target.files || []);
+  if (!files.length) return;
+
+  addMessage('bot', `Przesyłam ${files.length} plik(i)…`);
+  const form = new FormData();
+  files.forEach(f => form.append('files', f, f.name));
+
+  const typing = addTyping();
+  try {
+    const res = await fetch(`${API_BASE}/upload`, { method:'POST', body: form });
+    const data = await res.json();
+    removeTyping(typing);
+    if (!res.ok) addMessage('bot', `❌ Upload nieudany: ${data.detail || res.statusText}`);
+    else addMessage('bot', `Zindeksowano: ${data.indexed} fragmentów z ${files.length} plików.`);
+  } catch (err) {
+    removeTyping(typing);
+    addMessage('bot', `❌ Upload nieudany: ${err.message}`);
+  } finally {
+    fileInput.value = '';
+  }
+});
