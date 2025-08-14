@@ -57,37 +57,22 @@ class CMSImport(BaseModel):
     collection: Optional[str] = "docs"
     records: List[CMSRecord]
 
-# ===== Helpers =====
-def build_answer(query: str, hits) -> ChatResponse:
-    # Prosty "extractive" styl: wybierz kilka najlepszych chunków i sklej wraz z lekkim podsumowaniem.
-    if not hits:
-        return ChatResponse(answer="Nie znalazłem pasujących danych. Spróbuj doprecyzować pytanie lub wgrać pliki/CMS.", sources=[])
+# ===== Generacja odpowiedzi za pomocą Gemini =====
+async def generate_with_gemini(prompt: str, temperature: float = 0.7) -> str:
+    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
+    headers = {"Content-Type": "application/json"}
+    params = {"key": GEMINI_API_KEY}
+    payload = {
+        "contents": [{"parts": [{"text": prompt}]}],
+        "generationConfig": {"temperature": temperature}
+    }
 
-    context_parts = []
-    sources = []
-    for r in hits:
-        payload = r.payload or {}
-        txt = payload.get("text", "")
-        context_parts.append(txt)
-        # zbuduj metadane do pokazania w UI
-        sources.append({
-            "id": payload.get("id") or str(uuid.uuid4())[:8],
-            "source": payload.get("source") or payload.get("title") or "fragment",
-            "file_type": payload.get("file_type") or "text",
-            "url": payload.get("url"),
-        })
-
-    # Bardzo prosta odpowiedź: streszczenie + zacytowane fragmenty (skrót)
-    # (Możesz tu podmienić na generatywną odpowiedź LLM, przekazując kontekst do modelu.)
-    summary = f"Na podstawie {len(hits)} dopasowanych fragmentów:"
-    snippets = []
-    for p in context_parts[:3]:
-        p = p.strip()
-        if len(p) > 300:
-            p = p[:300] + "…"
-        snippets.append(f"• {p}")
-    answer = summary + "\n" + "\n".join(snippets)
-    return ChatResponse(answer=answer, sources=sources[:5])
+    async with httpx.AsyncClient(timeout=30.0) as client:
+        response = await client.post(url, headers=headers, params=params, json=payload)
+        if response.status_code != 200:
+            raise HTTPException(status_code=500, detail=f"Gemini error: {response.text}")
+        data = response.json()
+        return data["candidates"][0]["content"]["parts"][0]["text"]
 
 # ===== Endpoints =====
 @app.get("/health")
