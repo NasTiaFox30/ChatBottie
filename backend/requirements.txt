@@ -1,0 +1,12 @@
+fastapi[all]
+pydantic
+python-multipart
+qdrant-client
+openai
+sentence-transformers
+pandas
+python-docx
+pdfminer.six
+numpy
+tiktoken
+python-dotenv
