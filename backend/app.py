@@ -95,6 +95,18 @@ async def chat(req: ChatRequest):
             answer="Nie znalazłem danych ;( Spróbuj zadać inne pytanie lub wgraj dokumenty.",
             sources=[]
         )
+    # 3️) Formowanie kontekstu
+    context = "\n".join(r.payload.get("text", "") for r in hits[:3])
+    prompt = f"""
+Odpowiadaj na pytania użytkownika, korzystając z podanego kontekstu.
+Jeżeli w kontekście nie ma odpowiedzi, szczerze powiedz, że nie wiesz.
+
+Pytanie: {query}
+
+Kontekst:
+{context}
+"""
+    
     
 
 @app.post("/upload")
