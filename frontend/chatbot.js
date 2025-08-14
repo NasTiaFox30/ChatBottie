@@ -7,6 +7,31 @@ const fileInput  = document.getElementById('fileInput');
 const importBtn  = document.getElementById('importCmsBtn');
 const clearBtn = document.getElementById('clearBtn');
 
+function addMessage(role, text, sources=[]) {
+  const wrapper = document.createElement('div');
+  wrapper.className = `msg ${role}`;
+
+  const bubble = document.createElement('div');
+  bubble.className = 'bubble';
+  bubble.textContent = text;
+
+  wrapper.appendChild(bubble);
+  messagesEl.appendChild(wrapper);
+
+  if (sources && sources.length) {
+    const pillTpl = document.getElementById('source-pill');
+    sources.slice(0,5).forEach(s => {
+      const a = pillTpl.content.firstElementChild.cloneNode(true);
+      a.textContent = `${s.file_type || s.source || 'źródło'} • ${s.id || ''}`.trim();
+      if (s.url) { a.href = s.url; } else { a.href = '#'; a.onclick = e => e.preventDefault(); }
+      bubble.appendChild(document.createElement('br'));
+      bubble.appendChild(a);
+    });
+  }
+
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+}
+
 function addTyping() {
   const el = document.createElement('div');
   el.className = 'msg bot';
