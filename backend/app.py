@@ -23,9 +23,7 @@ from qdrant_utils import upsert_chunks, search, reset_collection, ensure_collect
 
 
 # ===== Config =====
-# OPENAI_MODEL = os.getenv("OPENAI_EMBEDDING_MODEL", "text-embedding-3-small")
-# COHERE_MODEL = "embed-multilingual-v3.0"
-
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 # ~~ Konfiguracja FastAPI:
 app = FastAPI(title="Chatbot RAG API", version="1.0.0")
