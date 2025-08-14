@@ -113,3 +113,32 @@ clearBtn.addEventListener('click', async () => {
     addMessage('bot', `❌ Reset nieudany: ${err.message}`);
   }
 });
+
+
+// Testowanie 
+importBtn.addEventListener('click', async () => {
+  const demo = {
+    collection: "docs",
+    records: [
+      { id: "cms-1", title: "FAQ – Dostawa", body: "Dostawa trwa 2-3 dni robocze. Darmowa od 199 zł.", url: "https://example.com/faq" },
+      { id: "cms-2", title: "Kontakt", body: "Kontakt: support@example.com, tel. 123 456 789", url: "https://example.com/contact" },
+      { id: "cms-3", title: "Regulamin – zwroty", body: "Zwrot możliwy w 30 dni. Wymagany paragon lub potwierdzenie zakupu.", url: "https://example.com/terms" }
+    ]
+  };
+
+  const typing = addTyping();
+  try {
+    const res = await fetch(`${API_BASE}/cms/import`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(demo)
+    });
+    const data = await res.json();
+    removeTyping(typing);
+    if (!res.ok) addMessage('bot', `❌ Import CMS nieudany: ${data.detail || res.statusText}`);
+    else addMessage('bot', `📦 Zaimportowano CMS: ${data.indexed} fragmentów.`);
+  } catch (err) {
+    removeTyping(typing);
+    addMessage('bot', `❌ Import CMS nieudany: ${err.message}`);
+  }
+});
