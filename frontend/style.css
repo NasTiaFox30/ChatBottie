@@ -1,0 +1,24 @@
+:root {
+  --bg: #0c1c15;
+  --card: #152d24;
+  --accent: #5ca35c;
+  --accent-2: #84ff84;
+  --text: #e0ffe0;
+  --muted: #80968b;
+  --danger: #ff6b6b;
+  --bubble-bot: #152d24;
+  --bubble-user: #224235;
+
+  --radius: 14px;
+  --shadow: 0 12px 30px rgba(0, 0, 0, .35);
+  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+* {
+  box-sizing: border-box
+}
+
+html,
+body {
+  height: 100%
+}
