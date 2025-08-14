@@ -52,3 +52,36 @@ body {
   margin: 0 auto;
   padding: 16px
 }
+
+.chat {
+  background: linear-gradient(180deg, rgba(255, 255, 255, .02), rgba(255, 255, 255, .01));
+  border: 1px solid rgba(255, 255, 255, .06);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  min-height: 70vh;
+}
+
+.messages {
+  padding: 18px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  scroll-behavior: smooth;
+}
+
+.msg {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end
+}
+
+.msg.bot {
+  justify-content: flex-start
+}
+
+.msg.user {
+  justify-content: flex-end
+}
