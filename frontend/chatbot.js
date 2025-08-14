@@ -96,3 +96,20 @@ fileInput.addEventListener('change', async (e) => {
     fileInput.value = '';
   }
 });
+
+// clear colecction
+clearBtn.addEventListener('click', async () => {
+  const ok = confirm('Wyczyścić kolekcję wektorów?');
+  if (!ok) return;
+  const typing = addTyping();
+  try {
+    const res = await fetch(`${API_BASE}/reset`, { method:'POST' });
+    const data = await res.json();
+    removeTyping(typing);
+    if (!res.ok) addMessage('bot', `❌ Reset nieudany: ${data.detail || res.statusText}`);
+    else addMessage('bot', `Kolekcja wyczyszczona! : ${data.status}`);
+  } catch (err) {
+    removeTyping(typing);
+    addMessage('bot', `❌ Reset nieudany: ${err.message}`);
+  }
+});
