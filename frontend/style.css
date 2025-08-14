@@ -212,3 +212,12 @@ body {
   border-radius: 12px;
   cursor: pointer
 }
+
+.ghost:hover {
+  border-color: var(--accent)
+}
+
+.ghost.danger:hover {
+  border-color: var(--danger);
+  color: var(--danger)
+}
