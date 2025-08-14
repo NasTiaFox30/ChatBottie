@@ -81,7 +81,7 @@ def health():
     return {"status": "ok", "embedding_model": "all-MiniLM-L6-v2"}
 
 @app.post("/chat", response_model=ChatResponse)
-def chat(req: ChatRequest):
+async def chat(req: ChatRequest):
     query = clean_text(req.query)
     if not query:
         raise HTTPException(status_code=400, detail="Puste zapytanie.")
