@@ -68,7 +68,7 @@ chatForm.addEventListener('submit', async (e) => {
     }
   } catch (err) {
     removeTyping(typing);
-    addMessage('bot', `Problem z połączeniem ;(
+    addMessage('bot', `Problem z połączeniem - 
       (${err.message}).`);
   }
 });
