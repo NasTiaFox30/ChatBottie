@@ -1,4 +1,5 @@
 fastapi[all]
+uvicorn
 pydantic
 python-multipart
 qdrant-client
