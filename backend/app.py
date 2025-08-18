@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
 import httpx
+from fastapi.staticfiles import StaticFiles
 
 load_dotenv()
 
@@ -36,6 +37,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.mount("/", StaticFiles(directory="../frontend", html=True), name="frontend")
 
 # ===== Schemy =====
 class ChatRequest(BaseModel):
