@@ -18,7 +18,7 @@ if missing_vars:
 QDRANT_URL = os.getenv("QDRANT_URL")
 QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")  # Qdrant Cloud
 COLLECTION_NAME = os.getenv("QDRANT_COLLECTION", "docs")
-VECTOR_SIZE = int(os.getenv("VECTOR_SIZE", "384"))  # all-MiniLM-L6-v2 → 384
+VECTOR_SIZE = int(os.getenv("VECTOR_SIZE", "1024")) # embed-multilingual-v3.0 → 1024 
 
 _client = None
 
