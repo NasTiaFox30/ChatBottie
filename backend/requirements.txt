@@ -2,6 +2,7 @@ fastapi[all]
 pydantic
 python-multipart
 qdrant-client
+cohere
 httpx
 pandas
 python-docx
