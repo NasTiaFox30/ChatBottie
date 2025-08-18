@@ -1,4 +1,9 @@
 from typing import List
+import os
+import cohere
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 _model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
