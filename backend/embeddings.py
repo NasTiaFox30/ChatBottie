@@ -15,6 +15,11 @@ _MODEL = "embed-multilingual-v3.0"
 
 def embed_texts(texts: List[str]) -> List[List[float]]:
     """
-    Akceptuje listę tekstów, zwraca listę wektorów.
+    Tworzy embeddingi tekstów (Cohere) - zwraca wektory.
     """
-    return
+    resp = _client.embed(
+        texts=texts,
+        model=_MODEL,
+        input_type="search_document"
+    )
+    return resp.embeddings
