@@ -1,4 +1,5 @@
-const API_BASE = "http://localhost:8000";
+// const API_BASE = "http://localhost:8000";
+const API_BASE = "/"
 
 const messagesEl = document.getElementById('messages');
 const chatForm   = document.getElementById('chatForm');
