@@ -9,3 +9,4 @@ pdfminer.six
 numpy
 tiktoken
 python-dotenv
+gunicorn
