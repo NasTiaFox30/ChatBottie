@@ -3,6 +3,7 @@ pydantic
 python-multipart
 qdrant-client
 openai
+httpx
 sentence-transformers
 pandas
 python-docx
