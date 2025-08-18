@@ -1,5 +1,6 @@
 import os
 import uuid
+import uvicorn
 from typing import List, Optional, Any, Dict
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -28,6 +29,10 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 # ~~ Konfiguracja FastAPI:
 app = FastAPI(title="Chatbot RAG(Cohere) + Gemini", version="3.0.0")
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))  # dla Render
+    uvicorn.run("app:app", host="0.0.0.0", port=port)
 
 # CORS (testy lokalne)
 app.add_middleware(
