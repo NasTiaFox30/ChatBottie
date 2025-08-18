@@ -26,7 +26,7 @@ from qdrant_utils import upsert_chunks, search, reset_collection, ensure_collect
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 # ~~ Konfiguracja FastAPI:
-app = FastAPI(title="Chatbot RAG + Gemini", version="2.0.0")
+app = FastAPI(title="Chatbot RAG(Cohere) + Gemini", version="3.0.0")
 
 # CORS (testy lokalne)
 app.add_middleware(
