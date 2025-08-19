@@ -154,17 +154,29 @@ async def upload(files: List[UploadFile] = File(...)):
     total_chunks = 0
     for f in files:
         try:
-            content = await f.read()
+            # 1. zapisywanie oryginału
+            save_path = os.path.join(UPLOAD_DIR, f.filename)
+            with open(save_path, "wb") as out_file:
+                content = await f.read()
+                out_file.write(content)
+
+            # 2. Parsing, chunking
             text = parse_any(f.filename, content)
             chunks = chunk_text(text)
             vecs = embed_texts(chunks)
+
+            # 3.
             meta = [{
                 "id": f"{f.filename}-{i}",
                 "source": f.filename,
                 "file_type": f.filename.split(".")[-1].lower(),
+                "filename": f.filename,
+                "url": f"/files/{f.filename}"  # ✅ пряме посилання на файл
             } for i in range(len(chunks))]
+
             upsert_chunks(chunks, vecs, meta)
             total_chunks += len(chunks)
+
         except Exception as e:
             raise HTTPException(status_code=400, detail=f"Błąd pliku {f.filename}: {e}")
     return {"indexed": total_chunks}
