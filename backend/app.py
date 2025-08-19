@@ -47,6 +47,14 @@ app.add_middleware(
 app.mount("/page", StaticFiles(directory="../frontend", html=True), name="frontend")
 
 
+# Twortzenie dyrektorii do zapisywania plików
+UPLOAD_DIR = os.path.join(os.path.dirname(__file__), "uploaded_files")
+os.makedirs(UPLOAD_DIR, exist_ok=True)
+
+# Додаємо маршрут для статики (файли користувачів)
+app.mount("/files", StaticFiles(directory=UPLOAD_DIR), name="files")
+
+
 # ===== Schemy =====
 class ChatRequest(BaseModel):
     query: str
