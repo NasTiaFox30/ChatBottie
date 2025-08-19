@@ -121,9 +121,9 @@ importBtn.addEventListener('click', async () => {
   const demo = {
     collection: "docs",
     records: [
-      { id: "cms-1", title: "FAQ – Dostawa", body: "Dostawa trwa 2-3 dni robocze. Darmowa od 199 zł.", url: "https://example.com/faq" },
-      { id: "cms-2", title: "Kontakt", body: "Kontakt: support@example.com, tel. 123 456 789", url: "https://example.com/contact" },
-      { id: "cms-3", title: "Regulamin – zwroty", body: "Zwrot możliwy w 30 dni. Wymagany paragon lub potwierdzenie zakupu.", url: "https://example.com/terms" }
+      { id: "cms-1", title: "FAQ – Dostawa", body: "Dostawa trwa 2-3 dni robocze. Darmowa od 199 zł.", url: "cms_example.txt" },
+      { id: "cms-2", title: "Kontakt", body: "Kontakt: support@example.com, tel. 123 456 789", url: "cms_example.txt" },
+      { id: "cms-3", title: "Regulamin – zwroty", body: "Zwrot możliwy w 30 dni. Wymagany paragon lub potwierdzenie zakupu.", url: "cms_example.txt" }
     ]
   };
 
