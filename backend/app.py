@@ -37,13 +37,13 @@ if __name__ == "__main__":
 # CORS (testy lokalne)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # w produkcji zawęź do domeny frontendu
+    allow_origins=["*"],  # opcjonalnie domena frontendu
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# app.mount("/", StaticFiles(directory="../frontend", html=True), name="frontend")
+# dir frontend:
 app.mount("/page", StaticFiles(directory="../frontend", html=True), name="frontend")
 
 
