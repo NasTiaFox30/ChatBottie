@@ -9,6 +9,10 @@ def clean_text(s: str) -> str:
     s = re.sub(r'\s+', ' ', s or '').strip()
     return s
 
+def split_sentences(text: str) -> List[str]:
+    sentences = re.split(r'(?<=[.!?])\s+', text.strip())
+    return [s for s in sentences if s]
+
 def chunk_text(text: str, max_chars: int = 1000, overlap: int = 150) -> List[str]:
     text = clean_text(text)
     chunks = []
