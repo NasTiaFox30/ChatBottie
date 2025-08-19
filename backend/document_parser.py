@@ -15,16 +15,31 @@ def split_sentences(text: str) -> List[str]:
 
 def chunk_text(text: str, max_chars: int = 1000, overlap: int = 150) -> List[str]:
     text = clean_text(text)
+    sentences = split_sentences(text)
     chunks = []
-    start = 0
-    while start < len(text):
-        end = min(len(text), start + max_chars)
-        chunk = text[start:end]
-        chunks.append(chunk)
-        if end == len(text): break
-        start = end - overlap
-        if start < 0: start = 0
-    return [c for c in chunks if len(c) > 0]
+    current = ""
+
+    for sent in sentences:
+        if len(current) + len(sent) + 1 <= max_chars:
+            current += (" " if current else "") + sent
+        else:
+            if current:
+                chunks.append(current.strip())
+            current = sent
+
+    if current:
+        chunks.append(current.strip())
+
+    # overlap (poprzednia część)
+    result = []
+    for i, chunk in enumerate(chunks):
+        if i > 0 and overlap > 0:
+            prev = chunks[i-1]
+            overlap_text = prev[-overlap:]
+            chunk = overlap_text + " " + chunk
+        result.append(chunk.strip())
+
+    return result
 
 def parse_pdf(file_bytes: bytes) -> str:
     return clean_text(extract_text(BytesIO(file_bytes)))
