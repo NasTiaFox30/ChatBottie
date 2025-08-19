@@ -184,14 +184,21 @@ async def upload(files: List[UploadFile] = File(...)):
 def import_cms(data: CMSImport):
     chunks, meta = [], []
     for rec in data.records:
+        file_name = (rec.title or rec.id or str(uuid.uuid4())).replace(" ", "_") + ".txt"
+        save_path = os.path.join(UPLOAD_DIR, file_name)
+
+        text = ((rec.title + " — ") if rec.title else "") + (rec.body or "")
+        with open(save_path, "w", encoding="utf-8") as f:
+            f.write(text)
+
         base_meta = {
             "id": rec.id or str(uuid.uuid4()),
             "source": rec.title or "CMS",
             "file_type": rec.file_type or "cms",
-            "url": rec.url,
+            "url": f"/files/{file_name}",
             "title": rec.title
         }
-        text = ((rec.title + " — ") if rec.title else "") + (rec.body or "")
+        
         for i, ch in enumerate(chunk_text(text)):
             chunks.append(ch)
             m = dict(base_meta)
