@@ -119,12 +119,23 @@ Kontekst:
     # 4️) Generacja odpowiedzi przez Gemini
     answer_text = await generate_with_gemini(prompt)
     # 5️) Formowanie źródeł
-    sources = [{
-        "id": r.payload.get("id") or str(uuid.uuid4())[:8],
-        "source": r.payload.get("source") or "fragment",
-        "file_type": r.payload.get("file_type") or "text",
-        "url": r.payload.get("url"),
-    } for r in hits[:5]]
+    sources = []
+    for r in hits[:5]:
+        src = {
+            "id": r.payload.get("id") or str(uuid.uuid4())[:8],
+            "file_type": r.payload.get("file_type") or "text",
+            "url": r.payload.get("url"),
+        }
+        if r.payload.get("title"):
+            src["label"] = r.payload["title"]
+        elif r.payload.get("filename"):
+            src["label"] = r.payload["filename"]
+        elif r.payload.get("source"):
+            src["label"] = r.payload["source"]
+        else:
+            src["label"] = f"{src['file_type']} • {src['id']}"
+
+        sources.append(src)
 
     return ChatResponse(answer=answer_text, sources=sources)
     

@@ -23,7 +23,7 @@ function addMessage(role, text, sources=[]) {
     const pillTpl = document.getElementById('source-pill');
     sources.slice(0,5).forEach(s => {
       const a = pillTpl.content.firstElementChild.cloneNode(true);
-      a.textContent = `${s.file_type || s.source || 'źródło'} • ${s.id || ''}`.trim();
+      a.textContent = s.label || `${s.file_type || 'źródło'} • ${s.id || ''}`;
       if (s.url) { a.href = s.url; } else { a.href = '#'; a.onclick = e => e.preventDefault(); }
       bubble.appendChild(document.createElement('br'));
       bubble.appendChild(a);
