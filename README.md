@@ -7,7 +7,7 @@ Orientacyjna - 40-80 (14 dni)
 Rzeczywista -  20 god.
 
 ## Rozpoczęty - Zakończony
-12.08.2025 - 19.08.25
+12.08.2025 - 20.08.25
 
 
 # Jak działa aplikacja?
