@@ -1,10 +1,10 @@
 # ChatBottie
-## RAG(Cohere) z Qdrant + Gemini
+RAG(Cohere) z Qdrant + Gemini
 (Webowy Chatbot z analizą dokumentów i CMS)
 
 ## Liczba godzin
 Orientacyjna - 40-80 (14 dni)
-Rzeczywista - 
+Rzeczywista - 15 god.
 
 ## Rozpoczęty - Zakończony
 12.08.2025 - 19.08.25
@@ -48,26 +48,46 @@ Pytanie(quary) → Cohere (embedding) → Qdrant (szukanie kontekstu) → Gemini
 
 ### Uruchomienie lokalne:
 1) użyj:
+```
 const API_BASE = "http://localhost:8000";
+```
 zaminast -
+```
 const API_BASE = "https://chatbottie.onrender.com"
+```
 
 2) Terminal (Bash):
+```
 cd backend
 pip install -r requirements.txt
 uvicorn app:app --reload
+```
 
 Link aplkacji:
-Backend
-> http://127.0.0.1:8000
-Frontend:
-index.thml
+_Backend_: http://127.0.0.1:8000; 
+_Frontend_: index.thml
 
+### Online testowanie:
 
-
-## Online testowanie:
 Deploy Web Aplikacji "ChatBottie" na serwisie  - Render.com
 (Zajmuje kilka minut do startu serweru)
 https://chatbottie.onrender.com/page/index.html
+
+
+
+## dodatkowe instrukcje:
+ *Korzytanie z metody post /reset_all*:
+czyszczenie wszystkich plików (uploaded)
+
+lokal server:
+```
+ curl -X POST https://chatbottie.onrender.com/reset_all
+```
+online server:
+```
+ curl -X POST http://127.0.0.1:8000/reset_all
+```
+
+
 ---------------------------------------------------------------
-Creator: Anastasiia Bzova 2025 
+_**Creator: Anastasiia Bzova 2025**_
