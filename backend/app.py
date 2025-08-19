@@ -206,3 +206,11 @@ def import_cms(data: CMSImport):
 def reset():
     reset_collection()
     return {"status": "reset"}
+
+@app.post("/reset_all")
+def reset_all():
+    reset_collection()
+    if os.path.exists(UPLOAD_DIR):
+        shutil.rmtree(UPLOAD_DIR)
+    os.makedirs(UPLOAD_DIR, exist_ok=True)
+    return {"status": "reset_all (vectors + files)"}
