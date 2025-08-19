@@ -4,7 +4,7 @@ RAG(Cohere) z Qdrant + Gemini
 
 ## Liczba godzin
 Orientacyjna - 40-80 (14 dni)
-Rzeczywista - 15 god.
+Rzeczywista -  20 god.
 
 ## Rozpoczęty - Zakończony
 12.08.2025 - 19.08.25
