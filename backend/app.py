@@ -8,6 +8,7 @@ from pydantic import BaseModel
 from dotenv import load_dotenv
 import httpx
 from fastapi.staticfiles import StaticFiles
+import shutil
 
 load_dotenv()
 
