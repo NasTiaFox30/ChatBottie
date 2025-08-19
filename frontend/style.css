@@ -20,7 +20,8 @@
 
 body {
   margin: 0;
-  background: radial-gradient(1200px 600px at 10% 0%, #131738 0%, #0b0e22 60%, #0a0d1e 100%);
+  background: radial-gradient(1200px 600px at 10% 30%, #131738 0%, #0b0e22 90%, #0a0d1e 100%);
+  background-attachment: fixed;
   color: var(--text);
   font-family: var(--font);
 }
