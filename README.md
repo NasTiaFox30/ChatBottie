@@ -45,14 +45,21 @@ Pytanie(quary) → Cohere (embedding) → Qdrant (szukanie kontekstu) → Gemini
 
 
 ### Uruchomienie lokalne:
+1) użyj:
+const API_BASE = "http://localhost:8000";
+zaminast -
+const API_BASE = "https://chatbottie.onrender.com"
+
+2) Terminal (Bash):
 cd backend
 pip install -r requirements.txt
 uvicorn app:app --reload
 
 Link aplkacji:
+Backend
 > http://127.0.0.1:8000
 Frontend:
-> http://127.0.0.1:8000/static
+index.thml
 
 
 
