@@ -41,6 +41,8 @@ def chunk_text(text: str, max_chars: int = 1000, overlap: int = 150) -> List[str
 
     return result
 
+# === Parser'y===
+
 def parse_pdf(file_bytes: bytes) -> str:
     return clean_text(extract_text(BytesIO(file_bytes)))
 
