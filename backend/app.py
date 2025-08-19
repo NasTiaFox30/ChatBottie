@@ -169,7 +169,7 @@ async def upload(files: List[UploadFile] = File(...)):
                 "source": f.filename,
                 "file_type": f.filename.split(".")[-1].lower(),
                 "filename": f.filename,
-                "url": f"/files/{f.filename}"  # ✅ пряме посилання на файл
+                "url": f"/files/{f.filename}"  # link pliku
             } for i in range(len(chunks))]
 
             upsert_chunks(chunks, vecs, meta)
