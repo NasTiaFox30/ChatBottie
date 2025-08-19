@@ -36,6 +36,8 @@ VECTOR_SIZE="1024"
 LLM (model generatywny):
 Used Gemini 1.5 Flash - generowany GEMINI_API_KEY na https://aistudio.google.com/apikey
 
+Parser konwertuje, czyści i rozdziela na osobne części (chunks) - zdania, akapity 
+
 Wszystkie Environment Variables - były umieszczone w .env
 
 
