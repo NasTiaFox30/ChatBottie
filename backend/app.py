@@ -26,6 +26,7 @@ from qdrant_utils import upsert_chunks, search, reset_collection, ensure_collect
 
 
 # ===== Config =====
+GEMINI_URL = os.getenv("GEMINI_URL")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 # ~~ Konfiguracja FastAPI:
