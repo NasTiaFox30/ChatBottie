@@ -127,6 +127,14 @@ online server:
  curl -X POST http://127.0.0.1:8000/reset_all
 ```
 
+## Environments variables (.ENV):
+GEMINI_URL
+GEMINI_API_KEY
+COHERE_API_KEY
+QDRANT_API_KEY
+QDRANT_URL
+VECTOR_SIZE
+
 
 ---------------------------------------------------------------
 _**Creator: Anastasiia Bzova 2025**_
