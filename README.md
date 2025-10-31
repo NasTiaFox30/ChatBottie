@@ -16,6 +16,13 @@ Rzeczywista -  20 god.
 - Generacja: Google Gemini
 - Frontend: Static HTML/CSS/JS
 
+#### Embeddings (model embeddingów):
+- Sentence-Transformers (all-MiniLM-L6-v2) – lokalny model embeddingów (old versions 1-2.0.0)
+- Cohere (embed-multilingual-v3.0) - generowany COHERE_API_KEY na https://dashboard.cohere.com/api-keys (new version 3.0.0)
+VECTOR_SIZE="1024"
+#### LLM (model generatywny):
+Gemini 2.0 Flash - generowany GEMINI_API_KEY na https://aistudio.google.com/apikey
+
 
 # Jak działa aplikacja?
 - przesyłanie plików (PDF, TXT, DOCX itp.),
