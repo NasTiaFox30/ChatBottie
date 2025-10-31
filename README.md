@@ -26,28 +26,6 @@ Rzeczywista -  20 god.
 - opcjonalnie: czyszczenie kolekcji w Qdrant
 
 
-# Raport / Opis:
-Aplikacja (Fullstack) stworzona z wykorzystaniam:
-Frontend: HTML + CSS3 + JS
-Backend: Python (FastAPI - REST API)
-(versja Python 3.13.6)
-
-Wektorowa Baza Danych - Qdrant
-wymagane: QDRANT_URL, QDRANT_API_KEY
-
-Embeddings (model embeddingów):
-Sentence-Transformers (all-MiniLM-L6-v2) – lokalny model embeddingów (old versions 1-2.0.0)
-Cohere (embed-multilingual-v3.0) - generowany COHERE_API_KEY na https://dashboard.cohere.com/api-keys (new version 3.0.0)
-VECTOR_SIZE="1024"
-
-LLM (model generatywny):
-Used Gemini 2.0 Flash - generowany GEMINI_API_KEY na https://aistudio.google.com/apikey
-
-Parser konwertuje, czyści i rozdziela na osobne części (chunks) - zdania, akapity 
-
-Wszystkie Environment Variables - były umieszczone w .env
-
-
 ### Schemat działania:
 Pytanie(quary) → Cohere (embedding) → Qdrant (szukanie kontekstu) → Gemini (generacja odpowiedzi końcowej) 
 
