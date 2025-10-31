@@ -10,7 +10,7 @@ Rzeczywista -  20 god.
 12.08.2025 - 20.08.25
 
 # Technologie:
-- Backend: FastAPI (Python)
+- Backend: FastAPI (Python v3.13.6)
 - Wektorowa Baza Danych: Qdrant
 - Embedings: Cohere
 - Generacja: Google Gemini
