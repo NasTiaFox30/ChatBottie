@@ -47,7 +47,7 @@ Pytanie(quary) → Cohere (embedding) → Qdrant (szukanie kontekstu) → Gemini
 
 
 ### Uruchomienie lokalne:
-1) użyj:
+1) użyj w pliku frontend/chatbot.js:
 ```
 const API_BASE = "http://localhost:8000";
 ```
@@ -65,7 +65,7 @@ uvicorn app:app --reload
 
 Link aplkacji:
 _Backend_: http://127.0.0.1:8000; 
-_Frontend_: index.thml
+_Frontend_: index.html
 
 ### Online testowanie:
 
