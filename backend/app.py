@@ -26,6 +26,7 @@ from qdrant_utils import upsert_chunks, search, reset_collection, ensure_collect
 
 
 # ===== Config =====
+GEMINI_URL = os.getenv("GEMINI_URL")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 # ~~ Konfiguracja FastAPI:
@@ -76,7 +77,7 @@ class CMSImport(BaseModel):
 
 # ===== Generacja odpowiedzi za pomocą Gemini =====
 async def generate_with_gemini(prompt: str, temperature: float = 0.7) -> str:
-    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
+    url = GEMINI_URL
     headers = {"Content-Type": "application/json"}
     params = {"key": GEMINI_API_KEY}
     payload = {
