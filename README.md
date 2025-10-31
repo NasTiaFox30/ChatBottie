@@ -74,6 +74,45 @@ Deploy Web Aplikacji "ChatBottie" na serwisie  - Render.com
 https://chatbottie.onrender.com/page/index.html
 
 
+## Endpoints:
+#### `GET /health`
+Sprawdzenie stanu aplikacji
+#### `POST /chat`
+Komunikacja z botem
+```
+{
+  "query": "Twoje pytanie ,
+  "top_k": 5
+}
+```
+#### `POST /upload`
+Upload pliku dla indeksacji danych
+korzystanie z curl:
+```
+curl -X POST http://127.0.0.1:8000/upload \
+  -F "files=@document1.pdf" \
+  -F "files=@document2.docx"
+```
+#### `POST /cms/import`
+Importowanie danych z CMS (Content Management System)
+```
+{
+  "collection": "docs",
+  "records": [
+    {
+      "id": "унікальний_id",
+      "title": "Заголовок статті",
+      "body": "Текст статті...",
+      "url": "https://example.com/article",
+      "file_type": "cms"
+    }
+  ]
+}
+```
+#### `POST /reset`
+Czyszenie wektorowej bazy danych (kolekcji w Qdrant)
+#### `POST /reset_all`
+Całe czyszenie wektorowej bazy danych + uploaded pliki
 
 ## dodatkowe instrukcje:
  *Korzytanie z metody post /reset_all*:
