@@ -9,6 +9,13 @@ Rzeczywista -  20 god.
 ## Rozpoczęty - Zakończony
 12.08.2025 - 20.08.25
 
+# Technologie:
+- Backend: FastAPI (Python)
+- Wektorowa Baza Danych: Qdrant
+- Embedings: Cohere
+- Generacja: Google Gemini
+- Frontend: Static HTML/CSS/JS
+
 
 # Jak działa aplikacja?
 - przesyłanie plików (PDF, TXT, DOCX itp.),
