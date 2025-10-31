@@ -1,4 +1,4 @@
-# ChatBottie
+# 🤖 ChatBottie
 RAG(Cohere) z Qdrant + Gemini
 (Webowy Chatbot z analizą dokumentów i CMS)
 
@@ -39,7 +39,7 @@ Pytanie(quary) → Cohere (embedding) → Qdrant (szukanie kontekstu) → Gemini
 
 
 
-### Uruchomienie lokalne:
+## 🚀 Uruchomienie lokalne:
 1) użyj w pliku frontend/chatbot.js:
 ```
 const API_BASE = "http://localhost:8000";
@@ -50,7 +50,7 @@ const API_BASE = "https://chatbottie.onrender.com"
 ```
 
 2) Terminal (Bash):
-```
+```Bash
 cd backend
 pip install -r requirements.txt
 uvicorn app:app --reload
@@ -121,12 +121,7 @@ online server:
 ```
 
 ## Environments variables (.ENV):
-GEMINI_URL
-GEMINI_API_KEY
-COHERE_API_KEY
-QDRANT_API_KEY
-QDRANT_URL
-VECTOR_SIZE
+GEMINI_URL, GEMINI_API_KEY, COHERE_API_KEY, QDRANT_API_KEY, QDRANT_URL, VECTOR_SIZE
 
 
 ---------------------------------------------------------------
