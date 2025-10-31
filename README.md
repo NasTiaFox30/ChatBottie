@@ -28,6 +28,7 @@ Gemini 2.0 Flash - generowany GEMINI_API_KEY na https://aistudio.google.com/apik
 - przesyłanie plików (PDF, TXT, DOCX itp.),
 - indeksowanie treści w Qdrant,
 - zadawanie pytań i otrzymywanie odpowiedzi na podstawie kontekstu dokumentów,
+(parser konwertuje, czyści i rozdziela na osobne części (chunks) - zdania, akapity)
 - generowanie bardziej naturalnych odpowiedzi przy pomocy Gemini.
 
 - opcjonalnie: czyszczenie kolekcji w Qdrant
