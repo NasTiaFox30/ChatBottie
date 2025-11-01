@@ -70,5 +70,5 @@ def parse_any(filename: str, file_bytes: bytes) -> str:
         return parse_docx(file_bytes)
     if name.endswith(".csv"):
         return parse_csv(file_bytes)
-    # fallback: traktuj jako txt
+    # fallback: traktujemy jako txt
     return clean_text(file_bytes.decode("utf-8", errors="ignore"))
