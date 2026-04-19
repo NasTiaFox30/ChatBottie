@@ -56,15 +56,15 @@ def search(query_vec: List[float], top_k: int = 5, where: Dict[str,Any] | None =
     if where:
         conditions = [FieldCondition(key=k, match=MatchValue(value=v)) for k,v in where.items()]
         _filter = Filter(must=conditions)
-    res = client.search(
+    res = client.query_points( # earlier used  - search()
         collection_name=COLLECTION_NAME,
-        query_vector=query_vec,
+        query=query_vec, # earlier used  - query_vector
         limit=top_k,
         query_filter=_filter,
         with_payload=True,
         with_vectors=False
     )
-    return res
+    return res.points
 
 def reset_collection():
     client = get_client()
