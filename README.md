@@ -1,6 +1,7 @@
 # 🤖 ChatBottie
 RAG(Cohere) z Qdrant + Gemini
 (Webowy Chatbot z analizą dokumentów i CMS)
+[![Project overview](https://img.youtube.com/vi/8YAsv5BmbOc/0.jpg)](https://youtu.be/8YAsv5BmbOc)
 
 ## Liczba godzin
 Orientacyjna - 40-80 (14 dni)
