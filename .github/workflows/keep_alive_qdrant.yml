@@ -1,0 +1,41 @@
+name: Wake Up Qdrant
+
+on:
+  schedule:
+    - cron: '0 5 * * *'  # Запуск щодня о 05:00 UTC
+  workflow_dispatch:      # Дозволяє запустити вручну для тесту
+
+jobs:
+  ping-qdrant:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Qdrant Client
+        run: pip install qdrant-client
+
+      - name: Ping Qdrant API
+        env:
+          QDRANT_URL: ${{ secrets.QDRANT_URL }}
+          QDRANT_API_KEY: ${{ secrets.QDRANT_API_KEY }}
+        run: |
+          python -c "
+          import os
+          from qdrant_client import QdrantClient
+          url = os.getenv('QDRANT_URL')
+          key = os.getenv('QDRANT_API_KEY')
+          client = QdrantClient(url=url, api_key=key)
+          try:
+              # Робимо запит до списку колекцій
+              collections = client.get_collections()
+              print(f'Successfully connected to Qdrant. Found {len(collections.collections)} collections.')
+          except Exception as e:
+              print(f'Error connecting to Qdrant: {e}')
+              exit(1)
+          "
